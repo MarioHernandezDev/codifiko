@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    background-color: #080809;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'JetBrains Mono', monospace;
+    color: #e4e4e7;
+  }
+
+  h1, h2, h3, h4, .font-sans {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .italic {
+    padding-right: 0.15em;
+  }
+
+  .bg-grid-pattern {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  }
+
+  .bg-grid-dots {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  .page-enter-active,
+  .page-leave-active {
+    transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1), transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .page-enter-from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .page-leave-to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@layer components {
+  /* DESIGN TOKENS CORE DE CODIFIKO */
+  .cdk-panel {
+    @apply bg-[#0b0b0d]/60 border border-zinc-900/80 rounded-2xl p-6 backdrop-blur-md shadow-xl transition-all duration-300;
+  }
+
+  .cdk-panel-tactical {
+    @apply bg-[#0b0b0d]/40 border border-zinc-900/60 rounded-2xl p-8 backdrop-blur-md transition-all duration-500 relative overflow-hidden;
+  }
+  
+  .cdk-panel-sub {
+    @apply bg-zinc-950/40 border border-zinc-900/60 rounded-xl p-5 space-y-3;
+  }
+
+  .cdk-sys-ref {
+    @apply text-[10px] tracking-[0.3em] text-cyan-500 font-bold uppercase font-mono;
+  }
+  
+  .cdk-title-page {
+    @apply text-3xl md:text-4xl font-black text-white uppercase tracking-tighter font-mono;
+  }
+  
+  .cdk-text-mono-sm {
+    @apply text-[11px] text-zinc-500 uppercase font-mono leading-relaxed;
+  }
+
+  .cdk-badge-tech {
+    @apply px-3 py-1.5 bg-zinc-900/50 border border-zinc-800/80 text-[10px] text-zinc-400 rounded uppercase tracking-wider font-mono hover:border-cyan-500/40 hover:text-white transition-all duration-300;
+  }
+  
+  .cdk-badge-status {
+    @apply inline-flex items-center gap-2 px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-full text-[9px] text-zinc-400 font-mono;
+  }
+
+  .cdk-scan-container {
+    @apply relative aspect-square w-full rounded-xl bg-zinc-950 border border-zinc-800/80 flex items-center justify-center overflow-hidden;
+  }
+  
+  .cdk-laser-line {
+    @apply absolute top-0 left-0 w-full h-[1px] bg-cyan-500/40 shadow-[0_0_10px_#22d3ee] animate-[scan_4s_linear_infinite];
+  }
+
+  .scanlines-overlay {
+    background: linear-gradient(rgba(18, 18, 18, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
+    background-size: 100% 4px;
+  }
+
+  /* NUEVOS ESTILOS EXTRAÍDOS PARA LAS ZONAS DE TU PORTFOLIO */
+  .bg-scanlines {
+    background: linear-gradient(rgba(18, 18, 18, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 6px;
+  }
+
+  /* Capas cromáticas ambientales para transiciones sutiles */
+  .zone-quote {
+    @apply relative border-t border-b border-zinc-900/40 bg-gradient-to-b from-transparent via-cyan-950/[0.01] to-transparent;
+  }
+
+  .zone-arsenal {
+    @apply relative bg-gradient-to-b from-transparent via-purple-950/[0.01] to-transparent;
+  }
+
+  .zone-modus {
+    @apply relative border-t border-zinc-900/50 bg-gradient-to-b from-transparent via-amber-950/[0.01] to-transparent;
+  }
+
+  .zone-workspace {
+    @apply relative border-t border-b border-zinc-900/30 bg-gradient-to-b from-transparent via-blue-950/[0.015] to-transparent;
+  }
+
+  .zone-projects {
+    @apply relative bg-gradient-to-b from-transparent via-zinc-900/[0.02] to-transparent;
+  }
+
+  /* ANIMACIONES */
+  .animate-float-tactical {
+    animation: float-vertical 6s ease-in-out infinite;
+  }
+
+  .animate-progress {
+    animation: progress-load 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scan {
+  0% { top: 0%; }
+  50% { top: 100%; }
+  100% { top: 0%; }
+}
+
+@keyframes float-vertical {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes progress-load {
+  from { width: 0%; }
+}
+
+@keyframes ping-subtle {
+  0% { transform: scale(0.95); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.9; }
+}
+
+.animate-ping-subtle {
+  animation: ping-subtle 2s infinite ease-in-out;
+}
