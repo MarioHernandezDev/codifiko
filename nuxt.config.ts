@@ -17,12 +17,16 @@ export default defineNuxtConfig({
     '~/assets/css/main.css'
   ],
 
-  // 2. Configuración global de la App y SEO (Metadatos principales)
+  // 2. Configuración global de la App, SEO y Transiciones Smooth
   app: {
+    // Configuración de animaciones de transición entre páginas de Nuxt 4
+    pageTransition: { name: 'page', mode: 'out-in' },
+    
     head: {
       title: 'Codifiko | Diseño y Desarrollo Web en Granada',
       htmlAttrs: {
-        lang: 'es' // Indica a Google que tu web está en español
+        lang: 'es', // Indica a Google que tu web está en español
+        class: 'scroll-smooth' // Activa el desplazamiento fluido global nativo
       },
       meta: [
         { charset: 'utf-8' },

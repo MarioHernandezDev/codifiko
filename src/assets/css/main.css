@@ -1,9 +1,128 @@
-@theme {
-  /* Aquí podrás configurar cosas personalizadas si hiciese falta */
-}
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@700;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Tus estilos globales personalizados irán debajo */
+@layer base {
+  html, body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    background-color: #080809;
+    /* CORRECCIÓN DE LA OLA: Evita que elementos full-width rompan el layout u horizontal scroll */
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'JetBrains Mono', monospace;
+    color: #e4e4e7;
+  }
+
+  /* Los títulos grandes usarán la tipografía de diseño compacta y agresiva */
+  h1, h2, h3, .font-sans {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* CORRECCIÓN DE LA 'Z' E ITÁLICAS: Damos un respiro a todos los textos itálicos del sitio para que no se corten */
+  .italic {
+    padding-right: 0.15em;
+  }
+
+  /* El patrón de cuadrícula base técnica */
+  .bg-grid-pattern {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  }
+}
+
+@layer components {
+  /* ==========================================================================
+     DESIGN TOKENS (CLASES REUTILIZABLES DE CODIFIKO)
+     ========================================================================== */
+
+  /* PANELES / TARJETAS INDUSTRIALES TRADICIONALES */
+  .cdk-panel {
+    @apply bg-[#0b0b0d]/60 border border-zinc-900/80 rounded-2xl p-6 backdrop-blur-md shadow-xl transition-all duration-300;
+  }
+
+  /* NUEVOS PANELES TÁCTICOS MEJORADOS (MÁS AIRE Y AMPLIOS) */
+  .cdk-panel-tactical {
+    @apply bg-[#0b0b0d]/40 border border-zinc-900/60 rounded-2xl p-8 backdrop-blur-md transition-all duration-500 relative overflow-hidden;
+  }
+  
+  .cdk-panel-sub {
+    @apply bg-zinc-950/40 border border-zinc-900/60 rounded-xl p-5 space-y-3;
+  }
+
+  /* TEXTOS / ETIQUETAS TÉCNICAS */
+  .cdk-sys-ref {
+    @apply text-[10px] tracking-[0.3em] text-cyan-500 font-bold uppercase font-mono;
+  }
+  
+  .cdk-title-page {
+    @apply text-3xl md:text-4xl font-black text-white uppercase tracking-tighter font-mono;
+  }
+  
+  .cdk-text-mono-sm {
+    @apply text-[11px] text-zinc-500 uppercase font-mono leading-relaxed;
+  }
+
+  /* CHIPS / BADGES */
+  .cdk-badge-tech {
+    @apply px-3 py-1.5 bg-zinc-900/50 border border-zinc-800/80 text-[10px] text-zinc-400 rounded uppercase tracking-wider font-mono hover:border-cyan-500/40 hover:text-white transition-all duration-300;
+  }
+  
+  .cdk-badge-status {
+    @apply inline-flex items-center gap-2 px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-full text-[9px] text-zinc-400 font-mono;
+  }
+
+  /* EFECTOS VISUALES LÁSER / MATRIX */
+  .cdk-scan-container {
+    @apply relative aspect-square w-full rounded-xl bg-zinc-950 border border-zinc-800/80 flex items-center justify-center overflow-hidden;
+  }
+  
+  .cdk-laser-line {
+    @apply absolute top-0 left-0 w-full h-[1px] bg-cyan-500/40 shadow-[0_0_10px_#22d3ee] animate-[scan_4s_linear_infinite];
+  }
+
+  /* EFECTO DE LEVITACIÓN CIBERNÉTICA PARA IMÁGENES/ELEMENTOS */
+  .animate-float-tactical {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
+  /* UTILDAD PARA ANIMAR LLENADO DE BARRAS */
+  .animate-progress {
+    animation: progress-load 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+/* ==========================================================================
+   ANIMACIONES PERSONALIZADAS BRUTALES
+   ========================================================================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scan {
+  0% { top: 0%; }
+  50% { top: 100%; }
+  100% { top: 0%; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(1deg); }
+}
+
+@keyframes progress-load {
+  from { width: 0%; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
