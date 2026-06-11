@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "animejs": "^4.4.1",
     "cannon-es": "^0.20.0",
     "nuxt": "^4.4.8",
     "three": "^0.184.0",

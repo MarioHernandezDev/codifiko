@@ -91,7 +91,7 @@
 
   /* EFECTO DE LEVITACIÓN CIBERNÉTICA PARA IMÁGENES/ELEMENTOS */
   .animate-float-tactical {
-    animation: float-slow 6s ease-in-out infinite;
+    animation: float-vertical 6s ease-in-out infinite;
   }
 
   /* UTILDAD PARA ANIMAR LLENADO DE BARRAS */
@@ -114,9 +114,9 @@
   100% { top: 0%; }
 }
 
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(1deg); }
+@keyframes float-vertical {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
 }
 
 @keyframes progress-load {
