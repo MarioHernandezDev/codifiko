@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mi_pagina_nuxt
+    ports:
+      - "3000:3000"
+      - "24678:24678"
+    volumes:
+      - .:/src
+      # Estas dos líneas le dicen a Docker que mantenga node_modules y .nuxt dentro del contenedor sin mirar tu local:
+      - /src/node_modules
+      - /src/.nuxt
+    environment:
+      - HOST=0.0.0.0
+      - WATCHPACK_POLLING=true
