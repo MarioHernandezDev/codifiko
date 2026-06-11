@@ -15,12 +15,12 @@
         </NuxtLink>
 
         <nav class="hidden lg:flex items-center gap-8 text-[11px] uppercase tracking-widest">
-          <NuxtLink to="/sobre-mi" class="nav-link text-zinc-400 hover:text-white transition-colors relative py-1" active-class="text-cyan-400 active-nav-link">
+          <NuxtLink to="/sobre-mi" class="nav-link group text-zinc-400 hover:text-white transition-colors relative py-1" active-class="text-cyan-400 active-nav-link">
             <span class="bracket opacity-0 group-hover:opacity-100 transition-opacity mr-1 text-cyan-500/50">[</span>sobre_mí<span class="bracket opacity-0 group-hover:opacity-100 transition-opacity ml-1 text-cyan-500/50">]</span>
           </NuxtLink>
           
-          <NuxtLink to="/conceptos" class="nav-link text-zinc-400 hover:text-white transition-colors relative py-1" active-class="text-cyan-400 active-nav-link">
-            <span class="bracket opacity-0 group-hover:opacity-100 transition-opacity mr-1 text-purple-500/50">[</span>conceptos<span class="bracket opacity-0 group-hover:opacity-100 transition-opacity ml-1 text-purple-500/50">]</span>
+          <NuxtLink to="/laboratorio" class="nav-link group text-zinc-400 hover:text-white transition-colors relative py-1" active-class="text-purple-400 active-nav-link">
+            <span class="bracket opacity-0 group-hover:opacity-100 transition-opacity mr-1 text-purple-500/50">[</span>laboratorio<span class="bracket opacity-0 group-hover:opacity-100 transition-opacity ml-1 text-purple-500/50">]</span>
           </NuxtLink>
           
           <NuxtLink to="/contacto" class="relative overflow-hidden px-5 py-2 rounded-full border border-zinc-800 bg-zinc-900/30 text-zinc-300 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:border-cyan-500/50 hover:text-white hover:shadow-[0_0_15px_rgba(34,211,238,0.15)] btn-nav-contact" active-class="border-cyan-500 text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.2)]">
@@ -29,7 +29,7 @@
           </NuxtLink>
         </nav>
 
-        <button @click="toggleMenu" class="lg:hidden relative z-50 p-2 text-zinc-400 hover:text-white focus:outline-none flex flex-col justify-center items-center gap-1.5 w-8 h-8">
+        <button @click="toggleMenu" class="lg:hidden relative z-50 p-2 text-zinc-400 hover:text-white focus:outline-none flex flex-col justify-center items-center gap-1.5 w-8 h-8" aria-label="Menu">
           <span class="h-[1px] w-5 bg-current transition-transform duration-300 ease-in-out" :class="{'rotate-45 translate-y-[7px] text-cyan-400': isMenuOpen}"></span>
           <span class="h-[1px] w-5 bg-current transition-opacity duration-300 ease-in-out" :class="{'opacity-0': isMenuOpen}"></span>
           <span class="h-[1px] w-5 bg-current transition-transform duration-300 ease-in-out" :class="{'-rotate-45 -translate-y-[7px] text-cyan-400': isMenuOpen}"></span>
@@ -43,9 +43,9 @@
         <div class="space-y-2 relative z-10">
           <span class="text-[9px] text-cyan-500/40 tracking-[0.3em] font-mono block">// navigation_nodes</span>
           <nav class="flex flex-col space-y-6 text-3xl md:text-5xl font-black uppercase tracking-tighter">
-            <NuxtLink to="/sobre-mi" @click="toggleMenu" class="mobile-link" active-class="text-cyan-400">Sobre Mí <span class="text-xs font-mono text-zinc-600 tracking-normal ml-2">01/</span></NuxtLink>
-            <NuxtLink to="/conceptos" @click="toggleMenu" class="mobile-link" active-class="text-purple-400">Conceptos <span class="text-xs font-mono text-zinc-600 tracking-normal ml-2">02/</span></NuxtLink>
-            <NuxtLink to="/contacto" @click="toggleMenu" class="mobile-link" active-class="text-cyan-400">Contacto <span class="text-xs font-mono text-zinc-600 tracking-normal ml-2">03/</span></NuxtLink>
+            <NuxtLink to="/sobre-mi" @click="toggleMenu" class="mobile-link hover:text-cyan-400 transition-colors" active-class="text-cyan-400">Sobre Mí <span class="text-xs font-mono text-zinc-600 tracking-normal ml-2">01/</span></NuxtLink>
+            <NuxtLink to="/laboratorio" @click="toggleMenu" class="mobile-link hover:text-purple-400 transition-colors" active-class="text-purple-400">Laboratorio <span class="text-xs font-mono text-zinc-600 tracking-normal ml-2">02/</span></NuxtLink>
+            <NuxtLink to="/contacto" @click="toggleMenu" class="mobile-link hover:text-cyan-400 transition-colors" active-class="text-cyan-400">Contacto <span class="text-xs font-mono text-zinc-600 tracking-normal ml-2">03/</span></NuxtLink>
           </nav>
         </div>
       </div>
@@ -74,7 +74,7 @@
           <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">// index_nodes</div>
           <ul class="space-y-2 text-[11px] text-zinc-500 uppercase">
             <li><NuxtLink to="/sobre-mi" class="hover:text-cyan-400 transition-colors">./sobre_mí</NuxtLink></li>
-            <li><NuxtLink to="/conceptos" class="hover:text-purple-400 transition-colors">./conceptos</NuxtLink></li>
+            <li><NuxtLink to="/laboratorio" class="hover:text-purple-400 transition-colors">./laboratorio</NuxtLink></li>
             <li><NuxtLink to="/contacto" class="hover:text-cyan-400 transition-colors">./contacto</NuxtLink></li>
           </ul>
         </div>
@@ -116,29 +116,35 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const isMenuOpen = ref(false)
 const showScrollButton = ref(false)
-const currentYear = new Date().getFullYear()
+const currentYear = ref(2026) // Forzado de manera estática y segura para evitar desajustes de hidratación SSR
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
-  document.body.style.overflow = isMenuOpen.value ? 'hidden' : ''
+  if (import.meta.client) {
+    document.body.style.overflow = isMenuOpen.value ? 'hidden' : ''
+  }
 }
 
 const closeMenu = () => {
   isMenuOpen.value = false
-  document.body.style.overflow = ''
+  if (import.meta.client) {
+    document.body.style.overflow = ''
+  }
 }
 
 const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth' // Forzado por JS por si acaso
-  })
+  if (import.meta.client) {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
 }
 
-// Sensor de posición de scroll
 const checkScroll = () => {
-  // Muestra el botón solo cuando el usuario baja más de 400 píxeles
-  showScrollButton.value = window.scrollY > 400
+  if (import.meta.client) {
+    showScrollButton.value = window.scrollY > 400
+  }
 }
 
 onMounted(() => {
@@ -182,7 +188,7 @@ onUnmounted(() => {
   transform: scale(0.5) translateY(10px);
 }
 
-/* Estilos de links del header */
+/* Estilos de links del header con línea decorativa */
 .nav-link::after {
   content: '';
   position: absolute;
@@ -200,6 +206,15 @@ onUnmounted(() => {
 .active-nav-link {
   text-shadow: 0 0 12px rgba(34, 211, 238, 0.4);
 }
+.active-nav-link .bracket {
+  opacity: 1 !important;
+}
+
+/* Comportamientos reactivos de los corchetes cibernéticos */
+.nav-link:hover .bracket {
+  opacity: 1;
+}
+
 .btn-nav-contact:hover .btn-bg-slide {
   transform: translateX(0);
 }

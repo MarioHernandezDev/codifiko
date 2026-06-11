@@ -1,12 +1,11 @@
 <template>
-  <section id="terminal-game" class="relative w-full h-screen bg-[#0b0b0d] border-t border-b border-zinc-900/60 overflow-hidden flex items-center justify-center select-none">
+  <section id="terminal-game" class="relative w-full h-full bg-[#0b0b0d] overflow-hidden flex items-center justify-center select-none">
     
     <div ref="canvasContainer" class="absolute inset-0 w-full h-full z-10"></div>
 
     <div class="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none z-20"></div>
 
     <div class="absolute inset-0 z-30 flex flex-col justify-between p-8 pointer-events-none font-mono">
-      
       <div class="flex justify-between items-start w-full">
         <div class="space-y-1">
           <div class="text-[10px] tracking-[0.2em] text-cyan-500 font-bold uppercase">// CORE_TEST: STACK_MODULE</div>
@@ -23,15 +22,15 @@
         <p class="text-[11px] text-zinc-500 leading-relaxed">
           Pulsa <span class="text-cyan-400 font-bold">[CLICK / ESPACIO]</span> para calibrar el sistema y apilar los módulos de datos en tiempo real.
         </p>
-        <button @click="startGame" class="px-5 py-2 bg-white text-black text-[10px] font-bold uppercase tracking-widest hover:bg-cyan-500 transition-colors">
+        <button @click="startGame" class="w-full py-2 bg-white text-black text-[10px] font-bold uppercase tracking-widest hover:bg-cyan-400 transition-colors">
           :: INICIAR_TEST_
         </button>
       </div>
 
       <div v-if="gameEnded && !autopilot" class="max-w-xs mx-auto text-center space-y-4 pointer-events-auto bg-black/90 backdrop-blur-md p-6 border border-red-500/20 rounded-xl shadow-2xl">
         <div class="text-xs text-red-500 font-bold tracking-widest">// ALINEACIÓN FALLIDA</div>
-        <p class="text-[11px] text-zinc-400">Has perdido la calibración del bloque. Capas estables conseguidas: <span class="text-white font-bold">{{ score }}</span></p>
-        <button @click="startGame" class="px-5 py-2 border border-zinc-800 text-zinc-300 text-[10px] font-bold uppercase tracking-widest hover:border-white hover:text-white transition-colors">
+        <p class="text-[11px] text-zinc-400">Has perdido la precisión del bloque. Capas estables conseguidas: <span class="text-white font-bold">{{ score }}</span></p>
+        <button @click="startGame" class="w-full py-2 border border-zinc-800 text-zinc-300 text-[10px] font-bold uppercase tracking-widest hover:border-white hover:text-white transition-colors">
           [ REINICIAR_SISTEMA (R) ]
         </button>
       </div>
@@ -45,7 +44,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import * as THREE from 'three'
 import * as CANNON from 'cannon-es'
 
@@ -54,7 +53,6 @@ const score = ref(0)
 const autopilot = ref(true)
 const gameEnded = ref(false)
 
-// Variables del motor
 let camera, scene, renderer, world
 let lastTime = 0
 let stack = []
@@ -68,21 +66,24 @@ function setRobotPrecision() {
   robotPrecision = Math.random() * 0.8 - 0.4
 }
 
-// Inicializar Escena
 const initEngine = () => {
   if (!canvasContainer.value) return
 
-  // 1. CannonJS World
+  // Forzamos lecturas seguras de tamaño
+  const w = canvasContainer.value.clientWidth || 800
+  const h = canvasContainer.value.clientHeight || 600
+
+  // 1. Mundo Físico
   world = new CANNON.World()
   world.gravity.set(0, -12, 0)
   world.broadphase = new CANNON.NaiveBroadphase()
   world.solver.iterations = 20
 
-  // 2. ThreeJS Scene
+  // 2. Escena Gráfica
   scene = new THREE.Scene()
   scene.background = new THREE.Color(0x0b0b0d)
 
-  const aspect = canvasContainer.value.clientWidth / canvasContainer.value.clientHeight
+  const aspect = w / h
   const width = 10
   const height = width / aspect
 
@@ -91,29 +92,28 @@ const initEngine = () => {
     height / 2, height / -2,
     0, 100
   )
-  
-  // Reajuste de la cámara para elevar el plano de visión en PC
   camera.position.set(4, 5, 4)
   camera.lookAt(0, 1, 0)
 
-  // Luces Estilizadas
+  // Luces
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.4)
   scene.add(ambientLight)
 
-  const dirLight = new THREE.DirectionalLight(0x22d3ee, 0.8) // Luz cian dirigida
+  const dirLight = new THREE.DirectionalLight(0x22d3ee, 0.8)
   dirLight.position.set(10, 20, 10)
   scene.add(dirLight)
 
-  const dirLight2 = new THREE.DirectionalLight(0xa855f7, 0.4) // Luz morada de contra
+  const dirLight2 = new THREE.DirectionalLight(0xa855f7, 0.4)
   dirLight2.position.set(-10, 10, -10)
   scene.add(dirLight2)
 
-  // Renderer
+  // Renderizador
   renderer = new THREE.WebGLRenderer({ antialias: true })
-  renderer.setSize(canvasContainer.value.clientWidth, canvasContainer.value.clientHeight)
+  renderer.setSize(w, h)
+  
+  canvasContainer.value.innerHTML = ''
   canvasContainer.value.appendChild(renderer.domElement)
 
-  // Reset de juego base
   resetGameEntities()
 }
 
@@ -123,24 +123,21 @@ const resetGameEntities = () => {
   score.value = 0
   setRobotPrecision()
 
-  // Limpiar físicos
-  while (world.bodies.length > 0) {
-    world.removeBody(world.bodies[0])
+  if (world) {
+    while (world.bodies.length > 0) world.removeBody(world.bodies[0])
   }
 
-  // Limpiar meshes
-  while (scene.children.find((c) => c.type === "Mesh")) {
-    const mesh = scene.children.find((c) => c.type === "Mesh")
-    scene.remove(mesh)
+  if (scene) {
+    while (scene.children.find((c) => c.type === "Mesh")) {
+      const mesh = scene.children.find((c) => c.type === "Mesh")
+      scene.remove(mesh)
+    }
   }
 
-  // Base fija
   addLayer(0, 0, originalBoxSize, originalBoxSize)
-  // Primera capa en movimiento
   addLayer(-10, 0, originalBoxSize, originalBoxSize, "x")
 
   if (camera) {
-    // Mantener encuadre elevado al reiniciar la simulación
     camera.position.set(4, 5, 4)
     camera.lookAt(0, 1, 0)
   }
@@ -167,30 +164,22 @@ function addOverhang(x, z, width, depth) {
 }
 
 function generateBox(x, y, z, width, depth, falls) {
-  // Configuración del Material: Transición de color técnica de Cian a Morado según altura
   const geometry = new THREE.BoxGeometry(width, boxHeight, depth)
-  
-  // Factor de degradado según el número de bloque
   const hue = (190 + stack.length * 7) % 360 
   const color = new THREE.Color(`hsl(${hue}, 85%, 55%)`)
   
-  const material = new THREE.MeshLambertMaterial({ 
-    color,
-    roughness: 0.2,
-  })
-  
+  const material = new THREE.MeshLambertMaterial({ color, roughness: 0.2 })
   const mesh = new THREE.Mesh(geometry, material)
   mesh.position.set(x, y, z)
-  scene.add(mesh)
+  if (scene) scene.add(mesh)
 
-  // Físicas
   const shape = new CANNON.Box(new CANNON.Vec3(width / 2, boxHeight / 2, depth / 2))
   let mass = falls ? 5 : 0
   mass *= (width / originalBoxSize) * (depth / originalBoxSize)
   
   const body = new CANNON.Body({ mass, shape })
   body.position.set(x, y, z)
-  world.addBody(body)
+  if (world) world.addBody(body)
 
   return { threejs: mesh, cannonjs: body, width, depth }
 }
@@ -217,8 +206,9 @@ function splitBlockAndAddNextOneIfOverlaps() {
 
   const topLayer = stack[stack.length - 1]
   const previousLayer = stack[stack.length - 2]
-  const direction = topLayer.direction
+  if (!topLayer || !previousLayer) return
 
+  const direction = topLayer.direction
   const size = direction === "x" ? topLayer.width : topLayer.depth
   const delta = topLayer.threejs.position[direction] - previousLayer.threejs.position[direction]
   const overhangSize = Math.abs(delta)
@@ -248,25 +238,25 @@ function splitBlockAndAddNextOneIfOverlaps() {
 
 function missedTheSpot() {
   const topLayer = stack[stack.length - 1]
-  addOverhang(topLayer.threejs.position.x, topLayer.threejs.position.z, topLayer.width, topLayer.depth)
-  world.removeBody(topLayer.cannonjs)
-  scene.remove(topLayer.threejs)
-
+  if (topLayer) {
+    addOverhang(topLayer.threejs.position.x, topLayer.threejs.position.z, topLayer.width, topLayer.depth)
+    if (world) world.removeBody(topLayer.cannonjs)
+    if (scene) scene.remove(topLayer.threejs)
+  }
   gameEnded.value = true
 }
 
-// Bucle de Animación principal adaptado a Vue
 const animate = (time) => {
   animationFrameId = requestAnimationFrame(animate)
 
-  if (lastTime) {
+  if (lastTime && scene && camera && renderer) {
     const timePassed = time - lastTime
     const speed = 0.007
 
     const topLayer = stack[stack.length - 1]
     const previousLayer = stack[stack.length - 2]
 
-    if (topLayer) {
+    if (topLayer && previousLayer) {
       const boxShouldMove = !gameEnded.value && (
         !autopilot.value || (autopilot.value && topLayer.threejs.position[topLayer.direction] < previousLayer.threejs.position[topLayer.direction] + robotPrecision)
       )
@@ -284,13 +274,11 @@ const animate = (time) => {
       }
     }
 
-    // Desplazamiento progresivo de cámara manteniendo la proporción de encuadre corregida
     if (camera.position.y < boxHeight * (stack.length - 2) + 5) {
       camera.position.y += speed * timePassed
     }
 
-    // Actualizar físicas y renderizar
-    world.step(timePassed / 1000)
+    if (world) world.step(timePassed / 1000)
     overhangs.forEach((element) => {
       element.threejs.position.copy(element.cannonjs.position)
       element.threejs.quaternion.copy(element.cannonjs.quaternion)
@@ -301,11 +289,8 @@ const animate = (time) => {
   lastTime = time
 }
 
-// Manejadores de Eventos globales e internos
 const handleAction = (e) => {
-  // Si pulsa un botón de la UI, no disparamos la acción del juego
   if (e.target.tagName === 'BUTTON') return
-  
   if (autopilot.value) startGame()
   else splitBlockAndAddNextOneIfOverlaps()
 }
@@ -324,30 +309,31 @@ const handleKeyDown = (e) => {
 
 const handleResize = () => {
   if (!canvasContainer.value || !camera || !renderer) return
-  const aspect = canvasContainer.value.clientWidth / canvasContainer.value.clientHeight
+  const w = canvasContainer.value.clientWidth
+  const h = canvasContainer.value.clientHeight
+  const aspect = w / h
   const width = 10
   const height = width / aspect
 
   camera.top = height / 2
   camera.bottom = height / -2
   camera.updateProjectionMatrix()
-
-  renderer.setSize(canvasContainer.value.clientWidth, canvasContainer.value.clientHeight)
+  renderer.setSize(w, h)
 }
 
-onMounted(() => {
-  initEngine()
-  animationFrameId = requestAnimationFrame(animate)
-
-  // Listeners
-  window.addEventListener("keydown", handleKeyDown)
-  window.addEventListener("resize", handleResize)
-  
-  // El evento de click se asocia solo al contenedor del juego para no romper el resto de la web
-  if (canvasContainer.value) {
-    canvasContainer.value.addEventListener("mousedown", handleAction)
-    canvasContainer.value.addEventListener("touchstart", handleAction)
-  }
+onMounted(async () => {
+  await nextTick()
+  setTimeout(() => {
+    initEngine()
+    animationFrameId = requestAnimationFrame(animate)
+    window.addEventListener("keydown", handleKeyDown)
+    window.addEventListener("resize", handleResize)
+    
+    if (canvasContainer.value) {
+      canvasContainer.value.addEventListener("mousedown", handleAction)
+      canvasContainer.value.addEventListener("touchstart", handleAction)
+    }
+  }, 150)
 })
 
 onUnmounted(() => {

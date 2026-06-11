@@ -1,14 +1,11 @@
 <template>
-  <div class="w-full relative">
+  <div class="w-full relative select-none">
 
-    <!-- AMBIENT GLOWS -->
-    <div class="fixed top-1/4 left-1/4 w-[600px] h-[600px] bg-cyan-500/[0.03] rounded-full blur-[160px] pointer-events-none -z-0"></div>
-    <div class="fixed bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-500/[0.04] rounded-full blur-[160px] pointer-events-none -z-0"></div>
+    <div class="fixed top-1/4 left-1/4 w-[600px] h-[600px] bg-cyan-500/[0.02] rounded-full blur-[160px] pointer-events-none -z-0"></div>
+    <div class="fixed bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-500/[0.03] rounded-full blur-[160px] pointer-events-none -z-0"></div>
 
-    <!-- ÍNDICE LATERAL -->
     <SectionNav />
 
-    <!-- MINI HERO HEADER -->
     <MiniHero
       sysRef="IDENTITY_DOSSIER // node_grx_2026"
       titleFirst="SOBRE"
@@ -20,16 +17,12 @@
       </p>
     </MiniHero>
 
-    <!-- ==========================================================
-         SECCIÓN 01 — PERFIL DE SISTEMA
-         Sin wrapper especial — fondo negro base de referencia
-         ========================================================== -->
     <main class="max-w-7xl mx-auto px-4 md:px-10 relative z-10">
       <section id="section1" class="mt-28 md:mt-40 mb-32 md:mb-52">
 
         <div class="mb-14 md:mb-20 border-b border-zinc-900 pb-6 flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
           <div class="space-y-1">
-            <div class="font-mono text-[9px] text-cyan-500/70 tracking-widest uppercase">// IDENTITY_MATRIX</div>
+            <div class="cdk-sys-ref">// IDENTITY_MATRIX</div>
             <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter leading-none">
               01 / Perfil de Sistema
             </h2>
@@ -40,11 +33,10 @@
         <div class="grid grid-cols-12 gap-10 lg:gap-16 items-start">
 
           <div class="col-span-12 lg:col-span-5 space-y-8">
-
             <div class="relative group">
               <div class="absolute inset-0 bg-cyan-500/5 rounded-2xl blur-3xl opacity-40 group-hover:opacity-80 transition-opacity duration-700 pointer-events-none"></div>
 
-              <div class="relative z-10 rounded-2xl border border-zinc-900 bg-zinc-950/60 p-3 backdrop-blur-md overflow-hidden group-hover:border-cyan-500/30 transition-colors duration-500">
+              <div class="cdk-panel-tactical p-3 group-hover:border-cyan-500/30 transition-colors duration-500">
                 <div class="absolute inset-0 bg-scanlines pointer-events-none opacity-30 z-20 mix-blend-overlay"></div>
                 <div class="cdk-laser-line"></div>
                 <div class="relative overflow-hidden rounded-xl bg-zinc-900/40">
@@ -92,18 +84,16 @@
                 </div>
               </div>
             </div>
-
           </div>
 
           <div class="col-span-12 lg:col-span-7 space-y-12 lg:pl-4">
-
             <div class="space-y-3 group border-l border-zinc-900 pl-6 hover:border-cyan-500/30 transition-colors duration-300">
               <div class="font-mono text-[9px] text-cyan-400 font-bold tracking-widest uppercase">// 01 . ACADEMIC_AND_CORPORATE_NODE</div>
               <h3 class="text-2xl md:text-3xl font-black text-white uppercase italic tracking-tight group-hover:text-cyan-400 transition-colors duration-300">
                 Ingeniería Avanzada en NTT DATA
               </h3>
               <p class="text-zinc-400 font-sans text-base leading-relaxed normal-case tracking-normal">
-                Tras finalizar mi formación superior en <strong class="text-white font-semibold">DAW en el Zaidín Vergeles</strong> en este ciclo de 2026, consolidé mi arquitectura lógica trabajando en los entornos de <strong class="text-cyan-400 font-semibold">NTT DATA</strong>. Una etapa completada con éxito absoluto donde asimilé flujos corporativos de alto nivel, despliegues críticos en producción y metodologías ágiles avanzadas en equipos de alto rendimiento.
+                Anclado en mi formación superior de <strong class="text-white font-semibold">DAW en el Zaidín Vergeles</strong> completada en este ciclo de 2026, consolidé mi arquitectura lógica trabajando en los entornos de <strong class="text-cyan-400 font-semibold">NTT DATA</strong>. Una etapa de escalado completada con éxito donde asimilé flujos corporativos de alto nivel, despliegues críticos en producción y metodologías ágiles avanzadas en equipos de alto rendimiento.
               </p>
               <p class="text-zinc-500 font-sans text-xs italic leading-relaxed normal-case tracking-normal">
                 Aprender bajo presión real, con código en producción y equipos multidisciplinares, fue la forma más brutal y efectiva de escalar. No hay bootcamp que lo replique.
@@ -147,23 +137,19 @@
                 </div>
               </div>
             </div>
-
           </div>
+
         </div>
       </section>
     </main>
 
-    <!-- ==========================================================
-         SECCIÓN 01.5 — FILOSOFÍA CORE (QUOTE)
-         Zone: tinte cyan-negro + ruido ASCII de fondo
-         ========================================================== -->
     <div class="zone-quote">
       <div class="max-w-7xl mx-auto px-4 md:px-10 relative z-10">
         <section class="py-32 md:py-52">
           <div class="relative border-l-2 border-cyan-500 pl-8 md:pl-12 py-6 bg-cyan-500/[0.02] rounded-r-2xl overflow-hidden">
             <span class="absolute top-4 right-6 font-serif text-8xl text-cyan-500/[0.05] leading-none select-none pointer-events-none">"</span>
-            <div class="font-mono text-[10px] text-cyan-400 tracking-widest uppercase mb-4">// CORE_PHILOSOPHY_TRANSMISSION</div>
-            <p class="font-black uppercase italic tracking-tighter text-white text-2xl md:text-4xl leading-tight max-w-3xl mb-6">
+            <div class="cdk-sys-ref mb-4">// CORE_PHILOSOPHY_TRANSMISSION</div>
+            <p class="font-black uppercase italic tracking-tighter text-white text-2xl md:text-4xl leading-tight max-w-3xl mb-6 font-mono">
               El código que nadie ve es tan importante como el que todo el mundo usa. La arquitectura silenciosa sostiene lo que brilla.
             </p>
             <span class="font-mono text-[10px] text-zinc-600 tracking-widest uppercase">MHP // Codifiko Node_GRX · 2026</span>
@@ -172,10 +158,6 @@
       </div>
     </div>
 
-    <!-- ==========================================================
-         SECCIÓN 02 — ARSENAL TÉCNICO
-         Zone: tinte púrpura + grid de puntos
-         ========================================================== -->
     <div class="zone-arsenal">
       <div class="max-w-7xl mx-auto px-4 md:px-10 relative z-10">
         <section id="section2" class="py-32 md:py-52 relative">
@@ -191,7 +173,6 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
             <div class="border border-zinc-900 bg-zinc-950/40 rounded-2xl p-6 flex flex-col justify-between group hover:border-cyan-500/30 transition-all duration-300">
               <div>
                 <div class="flex justify-between items-center mb-6 font-mono">
@@ -250,7 +231,6 @@
                 <span class="font-mono text-[10px] bg-zinc-900 text-zinc-300 px-3 py-1 rounded-lg border border-zinc-800 group-hover:border-zinc-700 transition-colors">Figma</span>
               </div>
             </div>
-
           </div>
 
           <div class="mt-8 bg-zinc-950/20 border border-zinc-900/60 rounded-xl p-4 flex items-center justify-between font-mono text-[9px] text-zinc-500">
@@ -265,10 +245,6 @@
       </div>
     </div>
 
-    <!-- ==========================================================
-         SECCIÓN 02.5 — MODUS OPERANDI
-         Zone: tinte ámbar + líneas diagonales tácticas
-         ========================================================== -->
     <div class="zone-modus">
       <div class="max-w-7xl mx-auto px-4 md:px-10 relative z-10">
         <section id="section-modus" class="py-32 md:py-52">
@@ -327,10 +303,6 @@
       </div>
     </div>
 
-    <!-- ==========================================================
-         SECCIÓN 03 — ESTACIÓN Y ENFOQUE
-         Zone: tinte azul-frío + barra de carga animada superior
-         ========================================================== -->
     <div class="zone-workspace">
       <div class="max-w-7xl mx-auto px-4 md:px-10 relative z-10">
         <section id="section3" class="py-32 md:py-52 relative">
@@ -346,7 +318,6 @@
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-
             <div class="space-y-8">
               <div class="space-y-2">
                 <div class="font-mono text-[10px] text-zinc-500 tracking-wider uppercase">// 03.1 / WORKSPACE_SETUP</div>
@@ -410,16 +381,12 @@
                 </div>
               </div>
             </div>
-
           </div>
+
         </section>
       </div>
     </div>
 
-    <!-- ==========================================================
-         SECCIÓN 03.5 — GALERÍA DE PROYECTOS
-         Zone: radial-gradient centrado — la más espectacular
-         ========================================================== -->
     <div class="zone-projects">
       <div class="max-w-7xl mx-auto px-4 md:px-10 relative z-10">
         <section id="section-projects" class="py-32 md:py-52">
@@ -447,6 +414,7 @@
             >
               <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                    :style="`background: radial-gradient(600px circle at 50% 50%, ${proj.glowColor}08, transparent 40%);`"></div>
+              
               <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
                 <span class="font-black uppercase italic tracking-tighter opacity-[0.03] transition-transform duration-700 group-hover:scale-110"
                       :class="(index === 0 || index === 3) ? 'text-7xl md:text-9xl' : 'text-5xl'"
@@ -454,7 +422,9 @@
                   {{ proj.glyphText }}
                 </span>
               </div>
+
               <div v-if="index === 0 || index === 3" class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:animate-scan pointer-events-none"></div>
+
               <div class="flex justify-between items-start relative z-10">
                 <div class="font-mono text-[9px] tracking-widest uppercase border border-zinc-900 bg-zinc-950/80 px-2.5 py-1 rounded-md"
                      :style="`color: ${proj.tagColor}; border-color: ${proj.glowColor}20`">
@@ -464,6 +434,7 @@
                   <span class="text-xs transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" :style="`color: ${proj.glowColor}`">↗</span>
                 </div>
               </div>
+
               <div class="space-y-4 relative z-10 pt-12">
                 <h3 class="font-black uppercase italic tracking-tighter text-white leading-none transition-colors duration-300"
                     :class="[(index === 0 || index === 3) ? 'text-3xl md:text-4xl group-hover:text-cyan-400' : 'text-xl group-hover:text-purple-400']">
@@ -483,10 +454,6 @@
       </div>
     </div>
 
-    <!-- ==========================================================
-         SECCIÓN 04 — TRAYECTORIA / TIMELINE
-         Zone: scanlines horizontales CRT — cierre austero
-         ========================================================== -->
     <div class="zone-timeline">
       <div class="max-w-7xl mx-auto px-4 md:px-10 relative z-10">
         <section id="section4" class="py-32 md:py-52">
@@ -504,9 +471,6 @@
       </div>
     </div>
 
-    <!-- ==========================================================
-         CTA FINAL — de vuelta al negro base
-         ========================================================== -->
     <div class="max-w-7xl mx-auto px-4 md:px-10 relative z-10">
       <section class="mb-20 border-t border-zinc-900 pt-24 text-center space-y-8 relative overflow-hidden">
 
@@ -514,7 +478,7 @@
           <img
             src="~/assets/img/profile-cyborg-mesh.webp"
             alt=""
-            class="w-[500px] h-[500px] object-cover opacity-[0.06] blur-2xl grayscale"
+            class="w-[500px] h-[500px] object-cover opacity-[0.05] blur-2xl grayscale"
           />
         </div>
 
@@ -535,12 +499,13 @@
             <span class="text-sm font-sans font-black">→</span>
           </NuxtLink>
           <NuxtLink
-            to="/conceptos"
+            to="/laboratorio"
             class="inline-flex items-center gap-3 border border-zinc-800 text-zinc-400 font-mono font-bold text-xs uppercase px-8 py-4 rounded-xl hover:border-zinc-600 hover:text-white transition-all duration-300"
           >
-            [ Ver Conceptos ]
+            [ Explorar Laboratorio ]
           </NuxtLink>
         </div>
+        
         <div class="pt-12 flex justify-center gap-6 font-mono text-[9px] text-zinc-700 tracking-widest">
           <span>CPU: 99%</span>
           <span class="text-zinc-900">|</span>
@@ -612,7 +577,7 @@ const projects = [
   {
     name: 'Codifiko — Tactical Lab',
     tag: '// PROYECTO_FLAGSHIP',
-    href: '/conceptos',
+    href: '/laboratorio',
     glowColor: '#22d3ee',
     tagColor: '#22d3ee',
     glyphText: 'CODIFIKO v2',
@@ -621,7 +586,7 @@ const projects = [
   {
     name: 'Design System Pro',
     tag: '// UI_DESIGN_SYSTEM',
-    href: '/conceptos',
+    href: '/laboratorio',
     glowColor: '#a78bfa',
     tagColor: '#a78bfa',
     glyphText: 'UI SYSTEM',
@@ -630,7 +595,7 @@ const projects = [
   {
     name: 'Agente IA Custom',
     tag: '// AI_INTEGRATION',
-    href: '/conceptos',
+    href: '/laboratorio',
     glowColor: '#4ade80',
     tagColor: '#4ade80',
     glyphText: 'AI AGENT',
@@ -639,7 +604,7 @@ const projects = [
   {
     name: 'Nitro API Engine',
     tag: '// BACKEND_CORE',
-    href: '/conceptos',
+    href: '/laboratorio',
     glowColor: '#f87171',
     tagColor: '#f87171',
     glyphText: 'REST API',
@@ -680,25 +645,18 @@ const timeline = [
 </script>
 
 <style scoped>
-
-/* =============================================
-   LASER SCAN — animación original
-   ============================================= */
+/* Transición controlada para el barrido del láser en las tarjetas */
 @keyframes laser-scan {
   0%   { top: 0%;   opacity: 0;   }
   10%  { opacity: 0.7; }
   90%  { opacity: 0.7; }
   100% { top: 100%; opacity: 0;   }
 }
-.group:hover .animate-scan {
+.group:hover .cdk-laser-line {
   animation: laser-scan 2.5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
 }
 
-/* =============================================
-   ZONE BACKGROUNDS — Identidad por sección
-   ============================================= */
-
-/* --- 01.5 QUOTE — cyan-negro + ruido ASCII --- */
+/* PSEUDO-ELEMENTOS DE INTEGRACIÓN CROMÁTICA ESPECÍFICA */
 .zone-quote {
   background-color: #030d0d;
   position: relative;
@@ -711,85 +669,44 @@ const timeline = [
   font-family: monospace;
   font-size: 10px;
   color: #22d3ee;
-  opacity: 0.025;
+  opacity: 0.02;
   word-break: break-all;
-  line-height: 1.9;
+  line-height: 2;
   pointer-events: none;
   overflow: hidden;
   padding: 24px;
-  z-index: 0;
 }
 
-/* --- 02 ARSENAL — púrpura + grid de puntos --- */
 .zone-arsenal {
-  background-color: #060310;
-  background-image: radial-gradient(circle, rgba(167, 139, 250, 0.12) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-color: #05030e;
+  background-image: radial-gradient(circle, rgba(167, 139, 250, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
   position: relative;
 }
 .zone-arsenal::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(167, 139, 250, 0.5), transparent);
-  pointer-events: none;
-}
-.zone-arsenal::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(167, 139, 250, 0.3), transparent);
-  pointer-events: none;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(167, 139, 250, 0.4), transparent);
 }
 
-/* --- 02.5 MODUS — ámbar + líneas diagonales --- */
 .zone-modus {
-  background-color: #0c0800;
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 24px,
-    rgba(251, 191, 36, 0.02) 24px,
-    rgba(251, 191, 36, 0.02) 25px
-  );
+  background-color: #0a0701;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 24px, rgba(251, 191, 36, 0.015) 24px, rgba(251, 191, 36, 0.015) 25px);
   position: relative;
 }
 .zone-modus::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(251, 191, 36, 0.45), transparent);
-  pointer-events: none;
-}
-.zone-modus::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(251, 191, 36, 0.2), transparent);
-  pointer-events: none;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(251, 191, 36, 0.4), transparent);
 }
 
-/* --- 03 WORKSPACE — azul frío + barra de carga animada --- */
 .zone-workspace {
-  background-color: #030810;
+  background-color: #02060e;
   position: relative;
   overflow: hidden;
 }
 .zone-workspace::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 2px;
+  content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 2px;
   background: linear-gradient(to right, transparent, #22d3ee, #a78bfa, transparent);
   animation: progress-load 4s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 1;
 }
 @keyframes progress-load {
   0%   { width: 0%;   left: 0;    opacity: 0;   }
@@ -798,49 +715,23 @@ const timeline = [
   100% { width: 100%; left: 0;    opacity: 0;   }
 }
 
-/* --- 03.5 PROJECTS — radial-gradient espectacular --- */
 .zone-projects {
-  background-color: #04040e;
-  background-image:
-    radial-gradient(ellipse 90% 60% at 50% 50%, #0d0d3a 0%, #07071a 40%, transparent 70%);
+  background-color: #03030c;
+  background-image: radial-gradient(ellipse 90% 60% at 50% 50%, #0a0a2e 0%, #050514 40%, transparent 70%);
   position: relative;
 }
 .zone-projects::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(129, 140, 248, 0.7), transparent);
-  pointer-events: none;
-}
-.zone-projects::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(129, 140, 248, 0.4), transparent);
-  pointer-events: none;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(129, 140, 248, 0.6), transparent);
 }
 
-/* --- 04 TIMELINE — scanlines horizontales CRT --- */
 .zone-timeline {
-  background-color: #050505;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 18px,
-    rgba(255, 255, 255, 0.013) 18px,
-    rgba(255, 255, 255, 0.013) 19px
-  );
+  background-color: #050506;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(255, 255, 255, 0.01) 18px, rgba(255, 255, 255, 0.01) 19px);
   position: relative;
 }
 .zone-timeline::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(100, 100, 110, 0.4), transparent);
-  pointer-events: none;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(100, 100, 110, 0.3), transparent);
 }
-
 </style>

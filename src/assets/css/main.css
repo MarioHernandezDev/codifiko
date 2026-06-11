@@ -10,7 +10,6 @@
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
     background-color: #080809;
-    /* CORRECCIÓN DE LA OLA: Evita que elementos full-width rompan el layout u horizontal scroll */
     max-width: 100%;
     overflow-x: hidden;
   }
@@ -20,36 +19,46 @@
     color: #e4e4e7;
   }
 
-  /* Los títulos grandes usarán la tipografía de diseño compacta y agresiva */
-  h1, h2, h3, .font-sans {
+  h1, h2, h3, h4, .font-sans {
     font-family: 'Space Grotesk', sans-serif;
   }
 
-  /* CORRECCIÓN DE LA 'Z' E ITÁLICAS: Damos un respiro a todos los textos itálicos del sitio para que no se corten */
   .italic {
     padding-right: 0.15em;
   }
 
-  /* El patrón de cuadrícula base técnica */
   .bg-grid-pattern {
     background-size: 50px 50px;
     background-image: 
       linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
   }
+
+  .bg-grid-dots {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  .page-enter-active,
+  .page-leave-active {
+    transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1), transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .page-enter-from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .page-leave-to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 }
 
 @layer components {
-  /* ==========================================================================
-     DESIGN TOKENS (CLASES REUTILIZABLES DE CODIFIKO)
-     ========================================================================== */
-
-  /* PANELES / TARJETAS INDUSTRIALES TRADICIONALES */
+  /* DESIGN TOKENS CORE DE CODIFIKO */
   .cdk-panel {
     @apply bg-[#0b0b0d]/60 border border-zinc-900/80 rounded-2xl p-6 backdrop-blur-md shadow-xl transition-all duration-300;
   }
 
-  /* NUEVOS PANELES TÁCTICOS MEJORADOS (MÁS AIRE Y AMPLIOS) */
   .cdk-panel-tactical {
     @apply bg-[#0b0b0d]/40 border border-zinc-900/60 rounded-2xl p-8 backdrop-blur-md transition-all duration-500 relative overflow-hidden;
   }
@@ -58,7 +67,6 @@
     @apply bg-zinc-950/40 border border-zinc-900/60 rounded-xl p-5 space-y-3;
   }
 
-  /* TEXTOS / ETIQUETAS TÉCNICAS */
   .cdk-sys-ref {
     @apply text-[10px] tracking-[0.3em] text-cyan-500 font-bold uppercase font-mono;
   }
@@ -71,7 +79,6 @@
     @apply text-[11px] text-zinc-500 uppercase font-mono leading-relaxed;
   }
 
-  /* CHIPS / BADGES */
   .cdk-badge-tech {
     @apply px-3 py-1.5 bg-zinc-900/50 border border-zinc-800/80 text-[10px] text-zinc-400 rounded uppercase tracking-wider font-mono hover:border-cyan-500/40 hover:text-white transition-all duration-300;
   }
@@ -80,7 +87,6 @@
     @apply inline-flex items-center gap-2 px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-full text-[9px] text-zinc-400 font-mono;
   }
 
-  /* EFECTOS VISUALES LÁSER / MATRIX */
   .cdk-scan-container {
     @apply relative aspect-square w-full rounded-xl bg-zinc-950 border border-zinc-800/80 flex items-center justify-center overflow-hidden;
   }
@@ -89,20 +95,48 @@
     @apply absolute top-0 left-0 w-full h-[1px] bg-cyan-500/40 shadow-[0_0_10px_#22d3ee] animate-[scan_4s_linear_infinite];
   }
 
-  /* EFECTO DE LEVITACIÓN CIBERNÉTICA PARA IMÁGENES/ELEMENTOS */
+  .scanlines-overlay {
+    background: linear-gradient(rgba(18, 18, 18, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
+    background-size: 100% 4px;
+  }
+
+  /* NUEVOS ESTILOS EXTRAÍDOS PARA LAS ZONAS DE TU PORTFOLIO */
+  .bg-scanlines {
+    background: linear-gradient(rgba(18, 18, 18, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 6px;
+  }
+
+  /* Capas cromáticas ambientales para transiciones sutiles */
+  .zone-quote {
+    @apply relative border-t border-b border-zinc-900/40 bg-gradient-to-b from-transparent via-cyan-950/[0.01] to-transparent;
+  }
+
+  .zone-arsenal {
+    @apply relative bg-gradient-to-b from-transparent via-purple-950/[0.01] to-transparent;
+  }
+
+  .zone-modus {
+    @apply relative border-t border-zinc-900/50 bg-gradient-to-b from-transparent via-amber-950/[0.01] to-transparent;
+  }
+
+  .zone-workspace {
+    @apply relative border-t border-b border-zinc-900/30 bg-gradient-to-b from-transparent via-blue-950/[0.015] to-transparent;
+  }
+
+  .zone-projects {
+    @apply relative bg-gradient-to-b from-transparent via-zinc-900/[0.02] to-transparent;
+  }
+
+  /* ANIMACIONES */
   .animate-float-tactical {
     animation: float-vertical 6s ease-in-out infinite;
   }
 
-  /* UTILDAD PARA ANIMAR LLENADO DE BARRAS */
   .animate-progress {
     animation: progress-load 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 }
 
-/* ==========================================================================
-   ANIMACIONES PERSONALIZADAS BRUTALES
-   ========================================================================== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -123,6 +157,12 @@
   from { width: 0%; }
 }
 
-.animate-fade-in {
-  animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+@keyframes ping-subtle {
+  0% { transform: scale(0.95); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.9; }
+}
+
+.animate-ping-subtle {
+  animation: ping-subtle 2s infinite ease-in-out;
 }
