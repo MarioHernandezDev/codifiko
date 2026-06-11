@@ -1,0 +1,9 @@
+@theme {
+  /* Aquí podrás configurar cosas personalizadas si hiciese falta */
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tus estilos globales personalizados irán debajo */

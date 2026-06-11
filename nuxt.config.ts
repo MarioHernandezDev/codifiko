@@ -3,12 +3,18 @@ export default defineNuxtConfig({
   // Configuración de compatibilidad de Nuxt
   compatibilityDate: '2024-11-01',
 
+  srcDir: 'src/',
+
   // Habilitar las herramientas de desarrollo en local
   devtools: { enabled: true },
 
   // 1. Módulos oficiales de Nuxt
   modules: [
     '@nuxtjs/tailwindcss'
+  ],
+
+  css: [
+    '~/assets/css/main.css'
   ],
 
   // 2. Configuración global de la App y SEO (Metadatos principales)
