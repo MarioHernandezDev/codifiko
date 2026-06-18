@@ -6,11 +6,10 @@
 
     <MiniHero
       sysRef="EXPERIMENTAL_SANDBOX // v1.2.0"
-      titleFirst="ENTORNO DE"
-      titleSecond="PRUEBAS // LAB"
+      titleFirst="LABORATORIO"
     >
       <p class="text-zinc-400 font-sans text-base md:text-lg leading-relaxed border-l border-zinc-800 pl-6 normal-case max-w-3xl tracking-normal">
-        Bienvenido a mi entorno aislado de ejecución. Este espacio está diseñado para experimentar con lógicas complejas, manipulación avanzada del DOM en tiempo real, matemáticas aplicadas a matrices de renderizado tridimensional y optimización de reactividad asíncrona.
+         Te apetece pasarlo bien?? Porque este entorno es solo para jugar con el diseño y con animaciones de todo tipo jejejejeej
       </p>
     </MiniHero>
 

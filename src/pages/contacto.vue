@@ -6,11 +6,10 @@
 
     <MiniHero
       sysRef="SECURE_UPLINK // ch_gate_2026"
-      titleFirst="ESTABLECER"
-      titleSecond="CONEXIÓN —"
+      titleFirst="HABLEMOS!"
     >
       <p class="text-zinc-400 font-sans text-base md:text-lg leading-relaxed border-l border-zinc-800 pl-6 normal-case max-w-2xl tracking-normal">
-        ¿Tienes un sistema que construir, un backend que optimizar o una célula de desarrollo de alto rendimiento que reforzar? Inicializa la secuencia de transmisión. Mi terminal procesará tu señal con prioridad absoluta.
+      Si quieres comentar tus ideas o colaborar conmigo de cualquier manera hazmelo saber, se aceptan cafés SIEMPRE ;)
       </p>
     </MiniHero>
 
