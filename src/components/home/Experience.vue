@@ -30,6 +30,10 @@ const items = [
       </svg>
     </div>
 
+    <div class="experience__media" aria-hidden="true">
+      <img src="/img/fotoflores.png" alt="" />
+    </div>
+
     <div class="container experience__inner">
       <p class="section__eyebrow">Experience</p>
       <h2 class="section__title">Where I've worked</h2>
@@ -42,26 +46,7 @@ const items = [
           :class="{ 'experience__card--feature': item.tag }"
         >
           <div class="experience__card-top">
-            <span class="experience__icon" aria-hidden="true">
-              <svg v-if="item.icon === 'controller'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7.5 7h9a4.5 4.5 0 0 1 4.3 5.9l-.7 2.2a2.5 2.5 0 0 1-4.3 1l-1-1.1a2 2 0 0 0-1.5-.7h-3a2 2 0 0 0-1.5.7l-1 1.1a2.5 2.5 0 0 1-4.3-1l-.7-2.2A4.5 4.5 0 0 1 7.5 7Z" />
-                <path d="M7 9v2M6 10h2" />
-                <path d="M15.2 9.3h.01M17.3 11h.01" />
-              </svg>
-              <svg v-else-if="item.icon === 'briefcase'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="7" width="18" height="13" rx="2" />
-                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                <path d="M3 12h18" />
-              </svg>
-              <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="2.2" />
-                <path d="M12 9.6c-1.4-1.5-1.4-3.8 0-5.2 1.4 1.4 1.4 3.7 0 5.2Z" />
-                <path d="M14.4 12c1.5-1.4 3.8-1.4 5.2 0-1.4 1.4-3.7 1.4-5.2 0Z" />
-                <path d="M12 14.4c1.4 1.5 1.4 3.8 0 5.2-1.4-1.4-1.4-3.7 0-5.2Z" />
-                <path d="M9.6 12c-1.5 1.4-3.8 1.4-5.2 0 1.4-1.4 3.7-1.4 5.2 0Z" />
-                <path d="M12 19.2V22" />
-              </svg>
-            </span>
+            
 
             <span class="experience__index">0{{ i + 1 }}</span>
           </div>
@@ -121,9 +106,50 @@ const items = [
   }
 }
 
+/* Panel diagonal con la foto, en espejo respecto al de Intro (ahí va a la
+   derecha, aquí a la izquierda) — toca el borde real de la pantalla y queda
+   por debajo de las cards, solo de fondo para dar cohesión visual. */
+.experience__media {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  width: 44%;
+  margin-right: calc(-50vw + 50%);
+  overflow: hidden;
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+.experience__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.experience__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0) 18%,
+    rgba(255, 255, 255, 0) 82%,
+    rgba(255, 255, 255, 0.55) 100%
+  );
+}
+
 .experience__inner {
   position: relative;
   z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .experience__media {
+    display: none;
+  }
 }
 
 .experience__grid {
