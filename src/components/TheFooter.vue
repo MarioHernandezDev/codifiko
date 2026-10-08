@@ -31,8 +31,7 @@ const year = new Date().getFullYear()
 
 <style scoped>
 .footer {
-  border-top: 1px solid var(--color-border);
-  background: var(--color-surface);
+  background: var(--color-black);
 }
 
 .footer__inner {
@@ -49,12 +48,12 @@ const year = new Date().getFullYear()
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.05rem;
-  color: var(--color-text);
+  color: #ffffff;
 }
 
 .footer__role {
   margin-top: 4px;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.55);
   font-size: 0.9rem;
 }
 
@@ -67,7 +66,7 @@ const year = new Date().getFullYear()
 .footer__links a,
 .footer__social a {
   text-decoration: none;
-  color: var(--color-text);
+  color: rgba(255, 255, 255, 0.82);
   font-size: 0.9rem;
   font-weight: 500;
   transition: color 0.2s ease;
@@ -75,17 +74,17 @@ const year = new Date().getFullYear()
 
 .footer__links a:hover,
 .footer__social a:hover {
-  color: var(--color-accent-dark);
+  color: var(--color-accent);
 }
 
 .footer__bottom {
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 20px;
   padding-bottom: 28px;
 }
 
 .footer__bottom p {
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.45);
   font-size: 0.8rem;
 }
 

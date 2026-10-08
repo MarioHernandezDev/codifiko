@@ -21,7 +21,7 @@
   z-index: 50;
   width: 100%;
   height: var(--nav-height);
-  background: var(--color-bg);
+  background: var(--color-black);
 }
 
 .nav__inner {
@@ -37,7 +37,7 @@
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.15rem;
-  color: var(--color-text);
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -58,7 +58,7 @@
   height: 100%;
   padding: 0 clamp(18px, 3vw, 32px);
   text-decoration: none;
-  color: var(--color-text);
+  color: rgba(255, 255, 255, 0.82);
   font-weight: 500;
   font-size: 0.95rem;
   letter-spacing: 0.01em;
@@ -67,12 +67,12 @@
 }
 
 .nav__link:hover {
-  color: var(--color-accent-dark);
-  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .nav__link.router-link-exact-active {
-  color: var(--color-accent-dark);
+  color: var(--color-accent);
 }
 
 .nav__link.router-link-exact-active::after {

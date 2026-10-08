@@ -5,7 +5,13 @@
       <p class="cta__text">
         I'm open to freelance work, collaborations, and conversations about data, AI, or just good design.
       </p>
-      <NuxtLink to="/contact" class="btn btn--primary">Get in touch</NuxtLink>
+      <NuxtLink to="/contact" class="btn btn--glass-green">
+        <span class="btn__label">
+          <span class="btn__label-text">Get in touch</span>
+          <span class="btn__label-text btn__label-text--clone" aria-hidden="true">Get in touch</span>
+        </span>
+        <i aria-hidden="true">&rarr;</i>
+      </NuxtLink>
     </div>
   </section>
 </template>
