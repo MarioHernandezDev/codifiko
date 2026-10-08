@@ -1,168 +1,172 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@700;900&display=swap');
+/* Design tokens */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #171412;
+  --color-text-muted: #6b6b6b;
+  --color-border: #e8e5e1;
+  --color-surface: #faf9f7;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  --color-accent: #f97316;
+  --color-accent-dark: #ea580c;
+  --color-accent-soft: #fff1e6;
 
-@layer base {
-  html, body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
-    background-color: #080809;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
 
-  body {
-    font-family: 'JetBrains Mono', monospace;
-    color: #e4e4e7;
-  }
+  --nav-height: 100px;
+  --container-max: 1200px;
+  --container-pad: clamp(20px, 5vw, 48px);
+}
 
-  h1, h2, h3, h4, .font-sans {
-    font-family: 'Space Grotesk', sans-serif;
-  }
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-  .italic {
-    padding-right: 0.15em;
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
-  .bg-grid-pattern {
-    background-size: 50px 50px;
-    background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  }
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
-  .bg-grid-dots {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-    background-size: 16px 16px;
-  }
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
 
-  .page-enter-active,
-  .page-leave-active {
-    transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1), transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
-  }
-  .page-enter-from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  .page-leave-to {
-    opacity: 0;
-    transform: translateY(-8px);
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Layout helpers */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 28px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-dark);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Reveal-up animation: text sits hidden below its own baseline and rises
+   smoothly into place. Wrap each line in .reveal, with a single block
+   child inside (the actual text) that gets animated. */
+.reveal {
+  display: block;
+  overflow: hidden;
+}
+
+.reveal > * {
+  display: block;
+  transform: translateY(115%);
+  opacity: 0;
+  animation: reveal-up 0.9s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: var(--reveal-delay, 0s);
+}
+
+@keyframes reveal-up {
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
-@layer components {
-  /* DESIGN TOKENS CORE DE CODIFIKO */
-  .cdk-panel {
-    @apply bg-[#0b0b0d]/60 border border-zinc-900/80 rounded-2xl p-6 backdrop-blur-md shadow-xl transition-all duration-300;
-  }
-
-  .cdk-panel-tactical {
-    @apply bg-[#0b0b0d]/40 border border-zinc-900/60 rounded-2xl p-8 backdrop-blur-md transition-all duration-500 relative overflow-hidden;
-  }
-  
-  .cdk-panel-sub {
-    @apply bg-zinc-950/40 border border-zinc-900/60 rounded-xl p-5 space-y-3;
-  }
-
-  .cdk-sys-ref {
-    @apply text-[10px] tracking-[0.3em] text-cyan-500 font-bold uppercase font-mono;
-  }
-  
-  .cdk-title-page {
-    @apply text-3xl md:text-4xl font-black text-white uppercase tracking-tighter font-mono;
-  }
-  
-  .cdk-text-mono-sm {
-    @apply text-[11px] text-zinc-500 uppercase font-mono leading-relaxed;
-  }
-
-  .cdk-badge-tech {
-    @apply px-3 py-1.5 bg-zinc-900/50 border border-zinc-800/80 text-[10px] text-zinc-400 rounded uppercase tracking-wider font-mono hover:border-cyan-500/40 hover:text-white transition-all duration-300;
-  }
-  
-  .cdk-badge-status {
-    @apply inline-flex items-center gap-2 px-3 py-1 bg-zinc-950 border border-zinc-900 rounded-full text-[9px] text-zinc-400 font-mono;
-  }
-
-  .cdk-scan-container {
-    @apply relative aspect-square w-full rounded-xl bg-zinc-950 border border-zinc-800/80 flex items-center justify-center overflow-hidden;
-  }
-  
-  .cdk-laser-line {
-    @apply absolute top-0 left-0 w-full h-[1px] bg-cyan-500/40 shadow-[0_0_10px_#22d3ee] animate-[scan_4s_linear_infinite];
-  }
-
-  .scanlines-overlay {
-    background: linear-gradient(rgba(18, 18, 18, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
-    background-size: 100% 4px;
-  }
-
-  /* NUEVOS ESTILOS EXTRAÍDOS PARA LAS ZONAS DE TU PORTFOLIO */
-  .bg-scanlines {
-    background: linear-gradient(rgba(18, 18, 18, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-    background-size: 100% 6px;
-  }
-
-  /* Capas cromáticas ambientales para transiciones sutiles */
-  .zone-quote {
-    @apply relative border-t border-b border-zinc-900/40 bg-gradient-to-b from-transparent via-cyan-950/[0.01] to-transparent;
-  }
-
-  .zone-arsenal {
-    @apply relative bg-gradient-to-b from-transparent via-purple-950/[0.01] to-transparent;
-  }
-
-  .zone-modus {
-    @apply relative border-t border-zinc-900/50 bg-gradient-to-b from-transparent via-amber-950/[0.01] to-transparent;
-  }
-
-  .zone-workspace {
-    @apply relative border-t border-b border-zinc-900/30 bg-gradient-to-b from-transparent via-blue-950/[0.015] to-transparent;
-  }
-
-  .zone-projects {
-    @apply relative bg-gradient-to-b from-transparent via-zinc-900/[0.02] to-transparent;
-  }
-
-  /* ANIMACIONES */
-  .animate-float-tactical {
-    animation: float-vertical 6s ease-in-out infinite;
-  }
-
-  .animate-progress {
-    animation: progress-load 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+@media (prefers-reduced-motion: reduce) {
+  .reveal > * {
+    animation: none;
+    transform: none;
+    opacity: 1;
   }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Section header pattern, shared across home/about blocks */
+.section {
+  padding: clamp(64px, 10vw, 112px) 0;
 }
 
-@keyframes scan {
-  0% { top: 0%; }
-  50% { top: 100%; }
-  100% { top: 0%; }
+.section--muted {
+  background: var(--color-surface);
 }
 
-@keyframes float-vertical {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-14px); }
+.section__eyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+  margin-bottom: 16px;
 }
 
-@keyframes progress-load {
-  from { width: 0%; }
-}
-
-@keyframes ping-subtle {
-  0% { transform: scale(0.95); opacity: 0.9; }
-  50% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(0.95); opacity: 0.9; }
-}
-
-.animate-ping-subtle {
-  animation: ping-subtle 2s infinite ease-in-out;
+.section__title {
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+  letter-spacing: -0.01em;
+  color: var(--color-text);
 }
