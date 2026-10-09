@@ -38,7 +38,9 @@ const categories = [
       { name: 'Trello', url: 'https://trello.com', icon: 'https://cdn.simpleicons.org/trello' },
       { name: 'Jira', url: 'https://www.atlassian.com/software/jira', icon: 'https://cdn.simpleicons.org/jira' },
       { name: 'Git', url: 'https://git-scm.com', icon: 'https://cdn.simpleicons.org/git' },
-      { name: 'Client management' },
+      { name: 'Client management', fallback: 'people' },
+      { name: 'English (conversational)', fallback: 'language' },
+      { name: 'Own car', fallback: 'car' },
     ],
   },
 ]
@@ -77,7 +79,16 @@ const categories = [
 
               <div v-else class="skills__card skills__card--static">
                 <span class="skills__icon-badge">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <svg v-if="tech.fallback === 'car'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 16V11l2-5h12l2 5v5" />
+                    <path d="M4 16h16M4 16v2.5a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V16M17 16v2.5a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V16" />
+                    <path d="M6 11h12" />
+                  </svg>
+                  <svg v-else-if="tech.fallback === 'language'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" />
+                  </svg>
+                  <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="8" cy="8" r="3" />
                     <path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
                     <circle cx="17.5" cy="9" r="2.4" />

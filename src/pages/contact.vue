@@ -60,6 +60,17 @@ const methods = [
         <i class="contact-card__arrow" aria-hidden="true">&rarr;</i>
       </a>
     </div>
+
+    <div class="container contact-methods__cv">
+      <p class="contact-methods__cv-text">Prefer the formal version?</p>
+      <NuxtLink to="/cv" class="btn btn--glass-dark">
+        <span class="btn__label">
+          <span class="btn__label-text">View CV</span>
+          <span class="btn__label-text btn__label-text--clone" aria-hidden="true">View CV</span>
+        </span>
+        <i aria-hidden="true">&rarr;</i>
+      </NuxtLink>
+    </div>
   </section>
 </template>
 
@@ -147,9 +158,27 @@ const methods = [
   color: var(--color-accent-dark);
 }
 
+.contact-methods__cv {
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact-methods__cv-text {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
 @media (max-width: 800px) {
   .contact-methods__grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact-methods__cv {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 }
 </style>
