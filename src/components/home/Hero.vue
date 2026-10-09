@@ -30,7 +30,7 @@ function renderFrame() {
 
   const video = heroVideo.value
   const el = nameVideoEl.value
-  if (!video || !el || !ctx || !boxWidth || !boxHeight || video.readyState < 2) return
+  if (!el || !ctx || !boxWidth || !boxHeight) return
 
   const style = getComputedStyle(el)
   ctx.clearRect(0, 0, boxWidth, boxHeight)
@@ -39,9 +39,13 @@ function renderFrame() {
   ctx.fillStyle = '#ffffff'
   ctx.fillText(el.textContent.trim().toUpperCase(), 0, boxHeight / 2)
 
-  ctx.globalCompositeOperation = 'source-in'
-  ctx.drawImage(video, 0, 0, boxWidth, boxHeight)
-  ctx.globalCompositeOperation = 'source-over'
+  // Mientras el vídeo no tiene fotogramas listos, se deja el relleno blanco
+  // de arriba como fallback en vez de pintar un hueco transparente.
+  if (video && video.readyState >= 2) {
+    ctx.globalCompositeOperation = 'source-in'
+    ctx.drawImage(video, 0, 0, boxWidth, boxHeight)
+    ctx.globalCompositeOperation = 'source-over'
+  }
 }
 
 onMounted(() => {
