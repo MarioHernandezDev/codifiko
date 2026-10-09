@@ -92,7 +92,6 @@ function dismiss() {
   color: #ffffff;
 
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
 
   box-shadow:
     0 24px 70px rgba(0, 0, 0, 0.2),
