@@ -1,25 +1,14 @@
 <template>
-  <section class="placeholder">
-    <div class="container">
-      <h1>About</h1>
-      <p>Coming soon.</p>
-    </div>
-  </section>
+  <PageHero eyebrow="About">
+    <template #title>
+      <span class="reveal" style="--reveal-delay: .12s"><span>Developer by trade,</span></span>
+      <span class="reveal" style="--reveal-delay: .2s"><span>florist by <i>accident</i>.</span></span>
+    </template>
+    <template #text>22 years old, based in Spain — here's the longer version of how I got here.</template>
+  </PageHero>
+
+  <AboutStory />
+  <AboutSkills />
+  <AboutTimeline />
+  <HomeCta />
 </template>
-
-<style scoped>
-.placeholder {
-  min-height: calc(100vh - var(--nav-height));
-  display: flex;
-  align-items: center;
-}
-
-h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-}
-
-p {
-  margin-top: 12px;
-  color: var(--color-text-muted);
-}
-</style>

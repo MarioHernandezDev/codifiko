@@ -1,24 +1,29 @@
 <script setup>
 const technologies = [
-    { name: 'Vue', url: 'https://vuejs.org', icon: 'https://cdn.simpleicons.org/vuedotjs' },
+  { name: 'Vue', url: 'https://vuejs.org', icon: 'https://cdn.simpleicons.org/vuedotjs' },
   { name: 'Nuxt', url: 'https://nuxt.com', icon: 'https://cdn.simpleicons.org/nuxt' },
-  
-    { name: 'Stripe', url: 'https://stripe.com', icon: 'https://cdn.simpleicons.org/stripe' },
-{ name: 'Supabase', url: 'https://supabase.com', icon: 'https://cdn.simpleicons.org/supabase' },
-  { name: 'GitHub', url: 'https://github.com', icon: 'https://cdn.simpleicons.org/github' },
-
+  { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', icon: 'https://cdn.simpleicons.org/javascript' },
+  { name: 'HTML', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML', icon: 'https://cdn.simpleicons.org/html5' },
+  { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS', icon: 'https://cdn.simpleicons.org/css' },
+  { name: 'Tailwind', url: 'https://tailwindcss.com', icon: 'https://cdn.simpleicons.org/tailwindcss' },
+  { name: 'Stripe', url: 'https://stripe.com', icon: 'https://cdn.simpleicons.org/stripe' },
+  { name: 'Supabase', url: 'https://supabase.com', icon: 'https://cdn.simpleicons.org/supabase' },
+  { name: 'Strapi', url: 'https://strapi.io', icon: 'https://cdn.simpleicons.org/strapi' },
+  { name: 'PHP', url: 'https://www.php.net', icon: 'https://cdn.simpleicons.org/php' },
+  { name: 'Laravel', url: 'https://laravel.com', icon: 'https://cdn.simpleicons.org/laravel' },
+  { name: 'Java', url: 'https://www.java.com', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
   { name: 'Python', url: 'https://www.python.org', icon: 'https://cdn.simpleicons.org/python' },
+  { name: 'Linux', url: 'https://www.linux.org', icon: 'https://cdn.simpleicons.org/linux' },
+  { name: 'Docker', url: 'https://www.docker.com', icon: 'https://cdn.simpleicons.org/docker' },
+  { name: 'Node', url: 'https://nodejs.org', icon: 'https://cdn.simpleicons.org/nodedotjs' },
+  { name: 'GitHub', url: 'https://github.com', icon: 'https://cdn.simpleicons.org/github' },
   { name: 'GitLab', url: 'https://gitlab.com', icon: 'https://cdn.simpleicons.org/gitlab' },
+  { name: 'Git', url: 'https://git-scm.com', icon: 'https://cdn.simpleicons.org/git' },
   { name: 'AWS', url: 'https://aws.amazon.com', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
   { name: 'Jupyter', url: 'https://jupyter.org', icon: 'https://cdn.simpleicons.org/jupyter' },
-  { name: 'Strapi', url: 'https://strapi.io', icon: 'https://cdn.simpleicons.org/strapi' },
-  { name: 'Java', url: 'https://www.java.com', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-   { name: 'PHP', url: 'https://www.php.net', icon: 'https://cdn.simpleicons.org/php' },
-  { name: 'Laravel', url: 'https://laravel.com', icon: 'https://cdn.simpleicons.org/laravel' },
-
-  { name: 'Claude Code', url: 'https://claude.com/claude-code', icon: 'https://cdn.simpleicons.org/claude' },
   { name: 'Trello', url: 'https://trello.com', icon: 'https://cdn.simpleicons.org/trello' },
-
+  { name: 'Jira', url: 'https://www.atlassian.com/software/jira', icon: 'https://cdn.simpleicons.org/jira' },
+  { name: 'Claude Code', url: 'https://claude.com/claude-code', icon: 'https://cdn.simpleicons.org/claude' },
 ]
 </script>
 

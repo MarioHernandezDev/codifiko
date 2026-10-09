@@ -18,7 +18,7 @@
           </h2>
         </div>
 
-        <NuxtLink to="/about" class="btn btn--glass-green intro__link">
+        <NuxtLink to="/about" class="btn btn--glass-dark intro__link">
           <span class="btn__label">
             <span class="btn__label-text">More about me</span>
             <span class="btn__label-text btn__label-text--clone" aria-hidden="true">More about me</span>
