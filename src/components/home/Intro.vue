@@ -155,11 +155,12 @@
 @media (max-width: 800px) {
   .intro {
     min-height: auto;
-    padding: 40px 0;
+    padding: 0;
   }
 
   .intro__grid {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .intro__media-wrapper {
@@ -176,7 +177,7 @@
   }
 
   .intro__content {
-    padding: 0;
+    padding: 40px 0;
     filter: none;
   }
 }

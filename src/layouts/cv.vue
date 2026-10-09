@@ -57,6 +57,18 @@ function print() {
   padding: clamp(24px, 5vw, 56px) var(--container-pad) 64px;
 }
 
+@media (max-width: 480px) {
+  .cv-bar {
+    flex-wrap: wrap;
+  }
+
+  .cv-bar__back,
+  .cv-bar__download {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
 @media print {
   .no-print {
     display: none !important;

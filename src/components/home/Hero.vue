@@ -233,6 +233,7 @@ onUnmounted(() => {
   line-height: 0.92;
   letter-spacing: -0.01em;
   color: #ffffff;
+  overflow-wrap: anywhere;
 }
 
 .hero__dot {
@@ -306,6 +307,10 @@ onUnmounted(() => {
 }
 
 @media (max-width: 800px) {
+  .hero__name {
+    font-size: clamp(1.75rem, 9.5vw, 9rem);
+  }
+
   .hero__intro {
     grid-template-columns: 1fr;
     gap: 20px;
