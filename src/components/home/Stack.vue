@@ -23,6 +23,8 @@ const technologies = [
   { name: 'Jupyter', url: 'https://jupyter.org', icon: 'https://cdn.simpleicons.org/jupyter' },
   { name: 'Trello', url: 'https://trello.com', icon: 'https://cdn.simpleicons.org/trello' },
   { name: 'Jira', url: 'https://www.atlassian.com/software/jira', icon: 'https://cdn.simpleicons.org/jira' },
+  { name: 'Search Console', url: 'https://search.google.com/search-console', icon: 'https://cdn.simpleicons.org/googlesearchconsole' },
+  { name: 'Analytics', url: 'https://analytics.google.com', icon: 'https://cdn.simpleicons.org/googleanalytics' },
   { name: 'Claude Code', url: 'https://claude.com/claude-code', icon: 'https://cdn.simpleicons.org/claude' },
 ]
 </script>

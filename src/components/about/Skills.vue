@@ -38,6 +38,8 @@ const categories = [
       { name: 'Trello', url: 'https://trello.com', icon: 'https://cdn.simpleicons.org/trello' },
       { name: 'Jira', url: 'https://www.atlassian.com/software/jira', icon: 'https://cdn.simpleicons.org/jira' },
       { name: 'Git', url: 'https://git-scm.com', icon: 'https://cdn.simpleicons.org/git' },
+      { name: 'Search Console', url: 'https://search.google.com/search-console', icon: 'https://cdn.simpleicons.org/googlesearchconsole' },
+      { name: 'Analytics', url: 'https://analytics.google.com', icon: 'https://cdn.simpleicons.org/googleanalytics' },
       { name: 'Client management', fallback: 'people' },
       { name: 'English (conversational)', fallback: 'language' },
       { name: 'Own car', fallback: 'car' },

@@ -234,6 +234,12 @@ mark {
   animation-delay: var(--reveal-delay, 0s);
 }
 
+/* While the preloader is up, keep every .reveal frozen at its starting
+   position (never run the delay down) so they only play once it's gone. */
+.is-loading .reveal > * {
+  animation-play-state: paused;
+}
+
 @keyframes reveal-up {
   to {
     transform: translateY(0);

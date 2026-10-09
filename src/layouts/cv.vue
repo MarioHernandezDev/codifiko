@@ -1,7 +1,13 @@
 <template>
   <div class="cv-layout">
     <div class="cv-bar no-print">
-      <NuxtLink to="/contact" class="cv-bar__back">&larr; Back to site</NuxtLink>
+      <NuxtLink to="/contact" class="btn btn--glass-white cv-bar__back">
+        <span class="btn__label">
+          <span class="btn__label-text">Back to site</span>
+          <span class="btn__label-text btn__label-text--clone" aria-hidden="true">Back to site</span>
+        </span>
+        <i aria-hidden="true">&larr;</i>
+      </NuxtLink>
       <button type="button" class="btn btn--glass-dark cv-bar__download" @click="print">
         <span class="btn__label">
           <span class="btn__label-text">Download PDF</span>
@@ -41,16 +47,10 @@ function print() {
   background: var(--color-black);
 }
 
-.cv-bar__back {
-  color: rgba(255, 255, 255, 0.82);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.cv-bar__back:hover {
-  color: var(--color-accent);
+/* La flecha apunta hacia atrás, así que se mueve a la izquierda al hover
+   (al revés que el resto de botones, que apuntan hacia delante). */
+.cv-bar__back:hover i {
+  transform: translateX(-4px);
 }
 
 .cv-layout__main {

@@ -17,14 +17,18 @@ const year = new Date().getFullYear()
       </nav>
 
       <div class="footer__social">
-        <a href="mailto:hello@mariohernandez.dev">Email</a>
-        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="#" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:marioherpad.01@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/marioherpad/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <NuxtLink to="/cv">CV</NuxtLink>
       </div>
     </div>
 
     <div class="footer__bottom container">
       <p>© {{ year }} Mario Hernández Padial. All rights reserved.</p>
+      <nav class="footer__legal" aria-label="Legal">
+        <NuxtLink to="/legal">Legal notice</NuxtLink>
+        <NuxtLink to="/privacy">Privacy policy</NuxtLink>
+      </nav>
     </div>
   </footer>
 </template>
@@ -81,6 +85,11 @@ const year = new Date().getFullYear()
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 20px;
   padding-bottom: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .footer__bottom p {
@@ -88,10 +97,31 @@ const year = new Date().getFullYear()
   font-size: 0.8rem;
 }
 
+.footer__legal {
+  display: flex;
+  gap: 20px;
+}
+
+.footer__legal a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.8rem;
+  transition: color 0.2s ease;
+}
+
+.footer__legal a:hover {
+  color: var(--color-accent);
+}
+
 @media (max-width: 640px) {
   .footer__inner {
     flex-direction: column;
     gap: 24px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 </style>

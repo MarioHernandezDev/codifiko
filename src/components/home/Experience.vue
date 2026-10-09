@@ -128,18 +128,7 @@ const items = [
   object-fit: cover;
 }
 
-.experience__media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(255, 255, 255, 0) 18%,
-    rgba(255, 255, 255, 0) 82%,
-    rgba(255, 255, 255, 0.55) 100%
-  );
-}
+
 
 .experience__inner {
   position: relative;
