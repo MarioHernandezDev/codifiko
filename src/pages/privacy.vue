@@ -18,7 +18,15 @@ usePageSeo({
         </p>
 
         <h2>What this site doesn't do</h2>
-        <p>No contact forms or data collection, no analytics or tracking scripts, and no cookies used to track or identify you.</p>
+        <p>No contact forms, no accounts, and no cookies used to track or identify you.</p>
+
+        <h2>Analytics</h2>
+        <p>
+          This site uses <a href="https://vercel.com/docs/analytics" target="_blank" rel="noopener noreferrer">Vercel Web Analytics</a>
+          to see aggregate page-view counts and which pages get visited. It doesn't use cookies, doesn't
+          track you across other sites, and doesn't collect any personal data — just anonymous,
+          aggregated numbers that help me understand how the site is used.
+        </p>
 
         <h2>External resources</h2>
         <p>

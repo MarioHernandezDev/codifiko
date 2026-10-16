@@ -43,8 +43,8 @@ function dismiss() {
       </h2>
 
       <p class="cookie-notice__text">
-        No tracking or analytics cookies here. We only load fonts and icons
-        from a couple of external services.
+        No tracking cookies here. Anonymous, cookie-less analytics plus fonts
+        and icons from a couple of external services.
         <NuxtLink to="/privacy">
           Learn more
           <span aria-hidden="true">↗</span>

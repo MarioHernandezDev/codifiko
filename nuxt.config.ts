@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   srcDir: 'src/',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
+  modules: ['@vercel/analytics/nuxt'],
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
@@ -21,6 +22,10 @@ export default defineNuxtConfig({
         { property: 'og:image', content: 'https://codifiko.vercel.app/img/profile.jpg' },
 
         { name: 'twitter:card', content: 'summary' },
+
+        ...(process.env.NUXT_GOOGLE_SITE_VERIFICATION
+          ? [{ name: 'google-site-verification', content: process.env.NUXT_GOOGLE_SITE_VERIFICATION }]
+          : []),
       ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
