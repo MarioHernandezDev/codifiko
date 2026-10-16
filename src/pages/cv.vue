@@ -1,8 +1,9 @@
 <script setup>
 definePageMeta({ layout: 'cv' })
 
-useHead({
+usePageSeo({
   title: 'CV — Mario Hernández Padial',
+  description: 'CV of Mario Hernández Padial, web developer based in Padul, Granada, Spain — skills, experience, and background in Vue, Nuxt, and full-stack development.',
 })
 
 const contact = [

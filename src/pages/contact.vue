@@ -1,4 +1,9 @@
 <script setup>
+usePageSeo({
+  title: 'Contact — Mario Hernández Padial',
+  description: 'Get in touch with Mario Hernández Padial, web developer based in Padul, Granada. Open to freelance work and collaborations — by phone, email, WhatsApp, or LinkedIn.',
+})
+
 const whatsappNumber = '34601613299'
 const whatsappMessage = 'Hola Mario, me gustaría hablar contigo.'
 const whatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`

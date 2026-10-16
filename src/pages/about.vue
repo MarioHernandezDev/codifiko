@@ -1,3 +1,10 @@
+<script setup>
+usePageSeo({
+  title: 'About — Mario Hernández Padial',
+  description: 'The story behind Mario Hernández Padial: a self-taught web developer based in Padul, Granada, now combining software development with a Machine Learning master\'s degree.',
+})
+</script>
+
 <template>
   <PageHero eyebrow="About">
     <template #title>

@@ -1,3 +1,10 @@
+<script setup>
+usePageSeo({
+  title: 'Legal Notice — Mario Hernández Padial',
+  description: 'Legal notice for codifiko.vercel.app, the personal portfolio of Mario Hernández Padial.',
+})
+</script>
+
 <template>
   <section class="legal section">
     <div class="container legal__inner">

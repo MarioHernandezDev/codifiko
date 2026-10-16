@@ -1,3 +1,10 @@
+<script setup>
+usePageSeo({
+  title: 'Privacy Policy — Mario Hernández Padial',
+  description: 'Privacy policy for codifiko.vercel.app, the personal portfolio of Mario Hernández Padial.',
+})
+</script>
+
 <template>
   <section class="legal section">
     <div class="container legal__inner">

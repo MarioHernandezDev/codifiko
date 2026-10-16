@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://codifiko.vercel.app/sitemap.xml
