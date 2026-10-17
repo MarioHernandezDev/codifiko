@@ -23,9 +23,7 @@ export default defineNuxtConfig({
 
         { name: 'twitter:card', content: 'summary' },
 
-        ...(process.env.NUXT_GOOGLE_SITE_VERIFICATION
-          ? [{ name: 'google-site-verification', content: process.env.NUXT_GOOGLE_SITE_VERIFICATION }]
-          : []),
+        { name: 'google-site-verification', content: '9elJA25q9S-8aT_eALjTsQtlhvo6LfpitEGjnZDoWks' },
       ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
