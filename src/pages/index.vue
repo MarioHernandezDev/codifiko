@@ -31,7 +31,7 @@ useHead({
 })
 </script>
 
-<template> 
+<template>
   <HomeHero />
   <HomeIntro />
   <HomeStack />
