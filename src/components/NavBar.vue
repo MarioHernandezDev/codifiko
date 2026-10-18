@@ -46,6 +46,7 @@ onBeforeUnmount(() => {
       <nav id="nav-links" class="nav__links" :class="{ 'nav__links--open': open }" aria-label="Main navigation">
         <NuxtLink to="/" class="nav__link">Home</NuxtLink>
         <NuxtLink to="/about" class="nav__link">About</NuxtLink>
+        <NuxtLink to="/proyectos" class="nav__link">Projects</NuxtLink>
         <NuxtLink to="/contact" class="nav__link">Contact</NuxtLink>
       </nav>
     </div>

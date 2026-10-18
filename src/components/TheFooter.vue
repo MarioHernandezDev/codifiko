@@ -13,6 +13,7 @@ const year = new Date().getFullYear()
       <nav class="footer__links" aria-label="Footer navigation">
         <NuxtLink to="/">Home</NuxtLink>
         <NuxtLink to="/about">About</NuxtLink>
+        <NuxtLink to="/proyectos">Projects</NuxtLink>
         <NuxtLink to="/contact">Contact</NuxtLink>
       </nav>
 
