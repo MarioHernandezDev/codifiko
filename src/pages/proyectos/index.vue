@@ -43,7 +43,6 @@ const projects = [
               <rect x="264" y="95" width="16" height="55" fill="#f3a6c4" />
               <rect x="288" y="60" width="16" height="90" fill="#f3a6c4" />
             </svg>
-            <span class="proyectos__cover-label">Live demo</span>
           </div>
 
           <div class="proyectos__body">
